@@ -63,7 +63,7 @@ function localStorageListo() {
 
     tweets = obtenerTweetsLocalStorage();
 
-    tweets.forEach(function(tweet) {
+    tweets.forEach(function (tweet) {
         // Crear boton de eliminar
         const botonBorrar = document.createElement('a');
         botonBorrar.classList = 'borrar-tweet';
@@ -107,21 +107,21 @@ function obtenerTweetsLocalStorage() {
 
 // Elminar tweet del local storage
 function borrarTweetLocalStorage(tweet) {
-    let tweets, 
-    tweetBorrar;
+    let tweets,
+        tweetBorrar;
     // Elimina la X del tweet
-    tweetBorrar = tweet.substring(0, tweet.length -1);
+    tweetBorrar = tweet.substring(0, tweet.length - 1);
 
     // Obtengo la lista de tweets del local storage
     tweets = obtenerTweetsLocalStorage();
 
     // Itero uno a uno y borro el que coincide con el string tweetBorrar (mi tweet a borrar)
-    tweets.forEach(function(tweet, index) {
-        if(tweetBorrar === tweet) {
+    tweets.forEach(function (tweet, index) {
+        if (tweetBorrar === tweet) {
             tweets.splice(index, 1);
         }
     });
-    
+
     // Seteo la nueva lista de tweets con sin los tweets borrados si los hubiera quitado
     localStorage.setItem('tweets', JSON.stringify(tweets));
 };
