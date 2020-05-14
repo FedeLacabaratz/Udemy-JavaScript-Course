@@ -11,6 +11,9 @@ function eventListeners () {
     // Cuando se envía el formulario
     document.querySelector('#formulario').addEventListener('submit', agregarTweet)
 
+    // Cuando se borra un tweet
+    listaTweets.addEventListener('click', borrarTweet);
+
 };
 
 // Functions
@@ -34,7 +37,12 @@ function agregarTweet(e) {
     li.appendChild(botonBorrar);
     // Añade el tweet a la lista
     listaTweets.appendChild(li);
+};
 
-    
+function borrarTweet(e) {
+    e.preventDefault();
 
-}
+    if(e.target.className === 'borrar-tweet') {
+        e.target.parentElement.remove();
+    }
+};
