@@ -20,40 +20,37 @@
                     </header>
                     <form id="enviar-mail" action="#" class="col s10 offset-s1">
                         <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="email" type="email">
-                                    <label for="email">Para:</label>
-                                </div>
-                                <div class="input-field col s12">
-                                        <input id="asunto" type="text">
-                                        <label for="asunto">Asunto</label>
-                                </div>
+                            <div class="input-field col s12">
+                                <input id="email" type="email">
+                                <label for="email">Para:</label>
+                            </div>
+                            <div class="input-field col s12">
+                                    <input id="asunto" type="text">
+                                    <label for="asunto">Asunto</label>
+                            </div>
                         </div>
-
-                            <div class="row">
-                                <div class="input-field col s12">
-                                <textarea id="mensaje" class="materialize-textarea"></textarea>
-                                <label for="mensaje">Mensaje</label>
-                                </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <textarea id="mensaje" class="materialize-textarea"></textarea>
+                            <label for="mensaje">Mensaje</label>
                             </div>
-                            <div class="row" id="loaders">
-    
-                                <img id="spinner" src="img/spinner.gif" width="150">
+                        </div>
+                        <div class="row" id="loaders">
+                            <img id="spinner" src="img/spinner.gif" width="150">
+                        </div>
+                        <div class="row">
+                            <div class="col s6">
+                                <button id="enviar" class="btn waves-effect waves-light  pink darken-2" type="submit" name="action">Enviar
+                                    <i class="material-icons right">send</i>
+                                </button>
                             </div>
-                            <div class="row">
-                                    <div class="col s6">
-                                        <button id="enviar" class="btn waves-effect waves-light  pink darken-2" type="submit" name="action">Enviar
-                                                <i class="material-icons right">send</i>
-                                        </button>
-                                    </div>
-                                    <div class="col s6">
-                                        <button id="resetBtn" class="btn waves-effect waves-light light-blue darken-2" type="submit">Reset
-                                                <i class="material-icons right">delete</i>
-                                        </button>
-                                    </div>
+                            <div class="col s6">
+                                <button id="resetBtn" class="btn waves-effect waves-light light-blue darken-2" type="submit">Reset
+                                    <i class="material-icons right">delete</i>
+                                </button>
                             </div>
+                        </div>
                     </form> 
-                    
                 </div> <!--.contenido-->
             </div>
         </div>
