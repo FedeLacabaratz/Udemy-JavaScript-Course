@@ -1,18 +1,58 @@
-// Constructor Seguro
+// Constructor del cotizador
+// Constructor para Seguro
 function Seguro(marca, anio, tipo) {
     this.marca = marca;
     this.anio = anio;
     this.tipo = tipo;
 };
 
-// Constructor de todo lo que se muestra
-function Interfaz() {
+Seguro.prototype.cotizarSeguro = function(informacion) {
+    /*
+        1 - Americano = 1.15
+        2 - Asiatico = 1.05
+        3 - Europeo = 1.35
+    */
+    let cantidad;
+    const base = 2000;
 
-};
+    switch(this.marca) {
+        case '1':
+            cantidad = base * 1.15;
+            break;
+        case '2':
+            cantidad = base * 1.05;
+            break;
+        case '3':
+            cantidad = base * 1.35;
+            break;
+    }
+    
+    // Leer el anio
+    const diferencia = new Date().getFullYear() - this.anio;
+    
+    // Cada anio de diferencia hay que reducir 3% del valor del seguro
+    cantidad -= ((diferencia * 3) / 100) * cantidad;
+    
+    /*
+        Si el seguro es básico se multiplica por 30% mas
+        Si el seguro es completo se multiplica por 50% mas
+    */
+    switch(this.tipo) {
+        case 'basico':
+            cantidad *= 1.30;
+            break;
+        case 'completo':
+            cantidad *= 1.50;
+            break;
+    }
+    return cantidad.toFixed(2);
+}
+
+// Constructor de todo lo que se muestra
+function Interfaz() {};
 
 // Mensaje que se imprime en el HTML
-
-Interfaz.prototype.mostrarError = function(mensaje, tipo) {
+Interfaz.prototype.mostrarMensaje = function(mensaje, tipo) {
     const div = document.createElement('div');
 
     if(tipo === 'error') {
@@ -22,10 +62,45 @@ Interfaz.prototype.mostrarError = function(mensaje, tipo) {
     }
     div.innerHTML = `${mensaje}`;
     formulario.insertBefore(div, document.querySelector('.form-group'))
-    
+
     setTimeout(function() {
         document.querySelector('.mensaje').remove();
     }, 3000);
+};
+
+// Imprime el resultado de la cotización
+Interfaz.prototype.mostrarResultado = function(seguro, total) {
+    const resultado = document.getElementById('resultado');
+    let marca;
+
+    switch(seguro.marca) {
+        case '1':
+            marca = 'Americano';
+            break;
+        case '2':
+            marca = 'Asiatico';
+            break;
+        case '3':
+            marca = 'Europeo';
+            break;
+    }
+    // Crear un div
+    const div = document.createElement('div');
+    // Insertar la información
+    div.innerHTML = `
+                    <p class="header">Tu Resumen:</p> 
+                    <p>Marca: ${marca}</p>
+                    <p>Año: ${seguro.anio}</p>
+                    <p>Tipo: ${seguro.tipo}</p>
+                    <p>Total: ${total}</p>
+    `;
+
+    const spinner = document.querySelector('#cargando img');
+    spinner.style.display = 'block';
+    setTimeout(function() {
+        spinner.style.display = 'none';
+        resultado.appendChild(div);
+    }, 3000)
 };
 
 // EventListener
@@ -51,10 +126,22 @@ formulario.addEventListener('submit', function(e) {
     // Revisamos que los campos no esten vacios
     if(marcaSeleccionada === '' || anioSeleccionado === '' || tipo === '') {
         // Interfaz imprimiendo un error
-        interfaz.mostrarError('Faltan datos, revisa el formulario y prueba de nuevo', 'error');
+        interfaz.mostrarMensaje('Faltan datos, revisa el formulario y prueba de nuevo', 'error');
     } else {
+
+        // Limpiar resultados anteriores
+        const resultados = document.querySelector('#resultado div');
+        if(resultados != null) {
+            resultados.remove();
+        }
+
         // Interfaz intanciando Seguro
-        console.log('Todo Correcto');
+        const seguro = new Seguro(marcaSeleccionada, anioSeleccionado, tipo);
+        //Cotizar el seguro
+        const cantidad = seguro.cotizarSeguro(seguro);
+        // Interfaz mostrar el resultado
+        interfaz.mostrarResultado(seguro, cantidad);
+        interfaz.mostrarMensaje('Cotizando...', 'correcto');
     }
 }); 
 
