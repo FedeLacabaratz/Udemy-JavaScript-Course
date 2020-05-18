@@ -1,4 +1,5 @@
-// Constructor del cotizador
+// Constructor del cotizador -- VERSION ES5 --
+
 // Constructor para Seguro
 function Seguro(marca, anio, tipo) {
     this.marca = marca;
