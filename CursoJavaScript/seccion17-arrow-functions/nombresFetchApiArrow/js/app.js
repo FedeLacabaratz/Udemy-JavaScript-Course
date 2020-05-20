@@ -30,19 +30,19 @@ function cargarNombres(e) {
 
      // Código de FETCH API AQUI
      fetch(url)
-          .then(function(res) {
+          .then(res => {
                if (res.status === 200) {
                     return res.json();
                }
           })
-          .then(function(nombres) {
+          .then(nombres => {
                     nombres = nombres.results
                     // Generar HTML
                     let htmlNombres = '<h2>Nombres Generados</h2>';
           
                     htmlNombres += '<ul class="lista">';
                     // Imprimir cada nombre
-                    nombres.forEach(function(nombre) {
+                    nombres.forEach(nombre => {
                          htmlNombres += `
                                         <li>${nombre.name.first}</li>
                          `;
@@ -50,7 +50,5 @@ function cargarNombres(e) {
                     htmlNombres += '</ul>';
                     document.getElementById('resultado').innerHTML = htmlNombres;
           })
-          .catch(function(error) {
-               console.log(error);
-          })
+          .catch(error => console.log(error))
      }
