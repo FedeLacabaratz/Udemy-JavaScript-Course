@@ -6,22 +6,22 @@ function cargarNombres(e) {
 
      // Leer las variables
      const origen = document.getElementById('origen');
-     const origenSeleccioado = origen.options[origen.selectedIndex].value;
+     const origenSeleccionado = origen.options[origen.selectedIndex].value;
 
      const genero = document.getElementById('genero');
-     const generoSeleccioado = genero.options[genero.selectedIndex].value;
+     const generoSeleccionado = genero.options[genero.selectedIndex].value;
 
      const cantidad = document.getElementById('numero').value;
 
      let url = '';
      url += 'https://randomuser.me/api/?';
      // Si hay origen le agrego la URL
-     if (origenSeleccioado !== '') {
-          url += `nat=${origenSeleccioado}&`;
+     if (origenSeleccionado !== '') {
+          url += `nat=${origenSeleccionado}&`;
      }
      // Si hay un genero le agrego la URL
-     if (generoSeleccioado !== '') {
-          url += `gender=${generoSeleccioado}&`;
+     if (generoSeleccionado !== '') {
+          url += `gender=${generoSeleccionado}&`;
      }
      // Si hay una cantidad le agrego la URL
      if (cantidad !== '') {
