@@ -1,4 +1,5 @@
-const cotizador = new API('a6b200d5b44a6811e928b6e79df61b9ff668984e5087bec47ba7c1eec4130e66');
+const YOUR_API_KEY = 'XXXXXXXXXXXXXXXXXX'; // Tienes que logear en CryptoCompare.com e insertar aqui tu propia api_key para que la app funcione.
+const cotizador = new API(YOUR_API_KEY);
 const ui = new Interfaz();
 
 // Leer el formulario
