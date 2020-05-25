@@ -1,21 +1,27 @@
-class UI {
-    constructor() {
+class API {
 
-         // Iniciar el mapa
-         this.mapa = this.inicializarMapa();
+    async obtenerDatos() {
 
-    }
+        // Obtener datos desde la API
+        const datos = await fetch(`https://www.mapabase.es/arcgis/rest/services/Otros/Gasolineras/FeatureServer/0/query?where=1=1&outFields=*&outSR=4326&f=json`);
+        
+        // Retornar datos como JSON
+        const respuestaJSON = await datos.json();
+        
+        const respuesta = {
+            respuestaJSON
+        }
 
-    inicializarMapa() {
-         // Inicializar y obtener la propiedad del mapa
-         const map = L.map('mapa').setView([19.390519, -99.3739778], 6);
-         const enlaceMapa = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-         L.tileLayer(
-             'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-             attribution: '&copy; ' + enlaceMapa + ' Contributors',
-             maxZoom: 18,
-             }).addTo(map);
-         return map;
-
+        const total = await respuesta.respuestaJSON.features;
+            for(let i=total.length -1; i > 0; i--) {
+                let indexAleatorio = Math.floor(Math.random()*(i+1));
+                let temporal = total[i];
+                total[i] = total[indexAleatorio];
+                total[indexAleatorio] = temporal;
+            }
+        const newTotal = await total.slice(0, 99);
+        
+        return newTotal
+        
     }
 }
