@@ -84,7 +84,6 @@ class UI {
     filtrarSugerencias(resultados, busqueda) {
         // Filtrar con filter
         const filtro = resultados.filter(filtro => filtro.attributes.provincia.indexOf(busqueda.toUpperCase()) !== -1);
-        console.log(filtro)
 
         // mostrar los pines
         this.mostrarPines(filtro);
