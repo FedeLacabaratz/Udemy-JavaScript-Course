@@ -1,6 +1,6 @@
 class EventBrite {
     constructor() {
-        this.token_auth = 'XXXXXXXXXXXXXX'; // Necesitaras obtener tu propia api key para poder utilizarlo aqui.
+        this.token_auth = 'XXXXXXXXXXXXX'; // Necesitaras obtener tu propia api key para poder utilizarlo aqui.
         this.ordenar = 'date';
     }
 

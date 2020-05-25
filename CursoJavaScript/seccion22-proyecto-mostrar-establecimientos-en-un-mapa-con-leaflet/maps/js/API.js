@@ -22,6 +22,3 @@ class API {
         const newTotal = await total.slice(0, 99);
         
         return newTotal
-        
-    }
-}
