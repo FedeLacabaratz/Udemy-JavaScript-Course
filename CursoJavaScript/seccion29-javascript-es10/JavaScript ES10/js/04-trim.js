@@ -1,0 +1,1 @@
+const correo = '    correo@correo.com    ';
