@@ -1,0 +1,19 @@
+{
+  "name": "intronodejs",
+  "version": "1.0.0",
+  "description": "Intro a NodeJS Express y Sequelize",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server"
+  },
+  "author": "Federico Lacabaratz",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "pug": "^3.0.0",
+    "sequelize": "^5.21.11"
+  }
+}
