@@ -4,12 +4,14 @@
   "description": "Intro a NodeJS Express y Sequelize",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server"
+    "dev": "nodemon server",
+    "start": "node server"
   },
-  "author": "Federico Lacabaratz",
+  "author": "Federico Lacabaratz - https://github.com/FedeLacabaratz",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
